@@ -40,10 +40,8 @@ const CheckOutForm = () => {
         token: token.token.id,
       }),
     });
-    const dishes = appContext.cart.items;
     if (response.ok) {
       setSuccess('注文に成功しました');
-      console.log(dishes);
     } else {
       setError('注文に失敗しました');
     }
@@ -53,6 +51,11 @@ const CheckOutForm = () => {
     <div className='paper'>
       <h5>あなたの情報</h5>
       <hr />
+      <p>注文は「ログイン」後にできます</p>
+      <p>テストカード番号: 4242 4242 4242 4242</p>
+      <p>月/年: 04/25</p>
+      <p>CVC: 123</p>
+      <p>郵便番号: 12312</p>
       <FormGroup>
         <div>
           <Label>住所</Label>

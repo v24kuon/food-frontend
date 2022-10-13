@@ -49,7 +49,7 @@ const Cart = () => {
               <div>
                 <Link href='/checkout'>
                   <Button style={{ width: '100%' }} color='primary'>
-                    <a style={{ color: 'white', textDecoration: 'none' }}>注文する</a>
+                    <a style={{ color: 'white', textDecoration: 'none' }}>決済する</a>
                   </Button>
                 </Link>
               </div>
