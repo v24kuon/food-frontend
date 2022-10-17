@@ -7,7 +7,6 @@ const index = () => {
   const [query, setQuery] = useState('');
   return (
     <div className='container-fluid'>
-      <Three />
       <Row>
         <Col>
           <div className='search'>
@@ -16,7 +15,6 @@ const index = () => {
               <InputGroupText>探す</InputGroupText>
             </InputGroup>
           </div>
-          <h1 className=''></h1>
           <RestaurantList search={query} />
         </Col>
       </Row>
