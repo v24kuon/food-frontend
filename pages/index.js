@@ -14,6 +14,7 @@ const index = () => {
               <InputGroupText>探す</InputGroupText>
             </InputGroup>
           </div>
+          <h1 className=''></h1>
           <RestaurantList search={query} />
         </Col>
       </Row>
