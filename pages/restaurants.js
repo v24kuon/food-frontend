@@ -34,7 +34,7 @@ const Restaurants = (props) => {
     const { restaurant } = data;
     return (
       <>
-        <h1>{restaurant.name}</h1>
+        <h1 style={{ marginTop: '1em' }}>{restaurant.name}</h1>
         <Row>
           {restaurant.dishes.map((dish) => (
             <Col xs='12' sm='6' md='4' key={dish.id} style={{ padding: 0 }}>
