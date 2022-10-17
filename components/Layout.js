@@ -25,7 +25,7 @@ const Layout = (props) => {
           <div className='container-fluid'>
             <NavItem>
               <Link href='/'>
-                <a className='navbar-brand'>ショッピングモール</a>
+                <a className='navbar-brand'>ホーム</a>
               </Link>
             </NavItem>
             <NavItem className='ms-auto'>
