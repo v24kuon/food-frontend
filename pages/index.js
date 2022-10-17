@@ -1,7 +1,6 @@
 import { Col, Input, InputGroup, InputGroupText, Row } from 'reactstrap';
 import RestaurantList from '../components/RestaurantsList';
 import React, { useState } from 'react';
-import Three from '../components/3D/Three';
 
 const index = () => {
   const [query, setQuery] = useState('');
