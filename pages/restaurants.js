@@ -27,14 +27,9 @@ const GET_RESTAURANT_DISHES = gql`
 const Restaurants = (props) => {
   const appContext = useContext(AppContext);
   const router = useRouter();
-  const str = process.browser ? location.href : '';
-  const result = str.match(/([^\/.]+)/g);
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, { variables: { id: router.query.id } });
-  const { loadings, errors, data2 } = useQuery(GET_RESTAURANT_DISHES, { variables: { id: result } });
   if (loading) return <h1>Loading...</h1>;
-  if (loadings) return <h1>Loading...</h1>;
   if (error) return <h1>レストランの読み込みに失敗しました</h1>;
-  if (errors) return <h1>レストランの読み込みに失敗しました</h1>;
   if (data) {
     const { restaurant } = data;
     return (
@@ -83,52 +78,7 @@ const Restaurants = (props) => {
       </>
     );
   } else {
-    const { restaurant } = data2;
-    return (
-      <>
-        <h1>{restaurant.name}</h1>
-        <Row>
-          {restaurant.dishes.map((dish) => (
-            <Col xs='6' sm='4' key={dish.id} style={{ padding: 0 }}>
-              <Card style={{ margin: '0 10px' }}>
-                <CardImg src={`${dish.image.url}`} top={true} style={{ height: 250 }} />
-                <CardBody>
-                  <CardTitle>{dish.name}</CardTitle>
-                  <CardTitle>{dish.description}</CardTitle>
-                </CardBody>
-                <div className='card-footer'>
-                  <Button outline color='primary' onClick={() => appContext.addItem(dish)}>
-                    + カートに入れる
-                  </Button>
-                </div>
-              </Card>
-            </Col>
-          ))}
-          <style jsx>
-            {`
-              a {
-                color: white;
-              }
-              a:link {
-                text-decoration: none;
-                color: white;
-              }
-              a:hover {
-                color: white;
-              }
-              .card-colums {
-                column-count: 3;
-              }
-            `}
-          </style>
-          <Col xs='3' style={{ padding: 0 }}>
-            <div>
-              <Cart />
-            </div>
-          </Col>
-        </Row>
-      </>
-    );
+    return <h1>レストランが見つかりませんでした。</h1>;
   }
 };
 
