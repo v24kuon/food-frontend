@@ -25,8 +25,8 @@ const RestaurantList = (props) => {
     return (
       <Row>
         {searchQuery.map((res) => (
-          <Col xs='12' sm='6' md='4' key={res.id} style={{ padding: 0 }}>
-            <Card>
+          <Col xs='12' sm='6' md='4' key={res.id} style={{ padding: '.5em' }}>
+            <Card style={{ height: '100%' }}>
               <CardImg src={`${res.image.url}`} top={true} style={{ height: 250 }} />
               <CardBody>
                 <CardTitle>{res.name}</CardTitle>
