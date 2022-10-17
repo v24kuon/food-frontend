@@ -27,7 +27,7 @@ const GET_RESTAURANT_DISHES = gql`
 const Restaurants = (props) => {
   const appContext = useContext(AppContext);
   const router = useRouter();
-  const str = location.href;
+  const str = process.browser ? location.href : '';
   const result = str.match(/([^\/.]+)/g);
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, { variables: { id: router.query.id } });
   const { loadings, errors, data2 } = useQuery(GET_RESTAURANT_DISHES, { variables: { id: result } });
