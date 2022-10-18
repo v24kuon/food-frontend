@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Canvas, useFrame } from 'react-three/fiber';
+import { Canvas, useFrame } from 'react-three-fiber';
 
 const Box = () => {
   const ref = useRef(null);
