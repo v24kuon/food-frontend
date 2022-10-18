@@ -18,7 +18,15 @@ const Home = () => {
     };
 
     // カメラ
-    const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 0.1, 2000);
+    //カメラセット
+    camera.position.set(-20, 30, 50);
+    camera.lookAt(new THREE.Vector3(0, 10, 0));
+
+    // 滑らかにカメラコントローラーを制御する
+    const controls = new OrbitControls(camera, document.body);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.2;
 
     // レンダラー
     const renderer = new THREE.WebGLRenderer({
@@ -26,18 +34,32 @@ const Home = () => {
       antialias: true,
       alpha: true,
     });
-    renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(new THREE.Color(0xffffff));
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
     // ボックスジオメトリー
-    const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-    const boxMaterial = new THREE.MeshLambertMaterial({
-      color: '#2497f0',
-    });
-    const box = new THREE.Mesh(boxGeometry, boxMaterial);
-    box.position.z = -5;
-    box.rotation.set(10, 10, 10);
-    scene.add(box);
+    const loader = new GLTFLoader();
+
+    loader.load(
+      'http://gtgshare006.xsrv.jp/3d/wallet.glb',
+      function (gltf) {
+        model = gltf.scene;
+        model.traverse((object) => {
+          //モデルの構成要素
+          if (object.isMesh) {
+            //その構成要素がメッシュだったら
+            object.material.trasparent = true; //透明許可
+            object.material.opacity = 0.8; //透過
+            object.material.depthTest = true; //陰影で消える部分
+          }
+        });
+        scene.add(model);
+      },
+      undefined,
+      function (e) {
+        console.error(e);
+      }
+    );
 
     // ライト
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
