@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
@@ -44,7 +44,7 @@ function init() {
   const loader = new GLTFLoader();
 
   loader.load(
-    'http://gtgshare006.xsrv.jp/3d/wallet.glb',
+    'https://gtgshare006.xsrv.jp/3d/wallet.glb',
     function (gltf) {
       model = gltf.scene;
       model.traverse((object) => {
