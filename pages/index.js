@@ -1,14 +1,12 @@
-// import { Col, Input, InputGroup, InputGroupText, Row } from 'reactstrap';
-// import RestaurantList from '../components/RestaurantsList';
+import { Col, Input, InputGroup, InputGroupText, Row } from 'reactstrap';
+import RestaurantList from '../components/RestaurantsList';
 import React, { useState } from 'react';
-import Three from '../components/3D/Three';
 
 const index = () => {
-  // const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
   return (
     <div className='container-fluid'>
-      <Three />
-      {/* <Row>
+      <Row>
         <Col>
           <div className='search'>
             <InputGroup>
@@ -27,7 +25,7 @@ const index = () => {
             max-width: 100%;
           }
         `}
-      </style> */}
+      </style>
     </div>
   );
 };
