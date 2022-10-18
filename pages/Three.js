@@ -65,11 +65,11 @@ const Home = () => {
     );
 
     // ライト
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-    scene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0xffffff, 0.2);
-    pointLight.position.set(1, 2, 3);
-    scene.add(pointLight);
+    const dirLight = new THREE.SpotLight(0xffffff, 1.5); //color,強度
+    dirLight.position.set(-20, 30, 30);
+    scene.add(dirLight);
+    const light = new THREE.AmbientLight(0xffffff, 1.0);
+    scene.add(light);
 
     // アニメーション
     function animate() {
@@ -90,7 +90,7 @@ const Home = () => {
   }, []);
   return (
     <>
-      <canvas id='canvas'></canvas>
+      <canvas id='canvas' style={{ width: '100%' }}></canvas>
     </>
   );
 };
