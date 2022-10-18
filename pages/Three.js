@@ -1,85 +1,77 @@
-import THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { useEffect } from 'react';
+import * as THREE from 'three';
 
-let camera;
-let scene;
-let renderer;
-let model;
+const Home = () => {
+  let canvas;
+  useEffect(() => {
+    if (canvas) return;
+    // canvasを取得
+    canvas = document.getElementById('canvas');
 
-init();
-animate();
+    // シーン
+    const scene = new THREE.Scene();
 
-function init() {
-  //シーンの作成
-  scene = new THREE.Scene();
+    // サイズ
+    const sizes = {
+      width: innerWidth,
+      height: innerHeight,
+    };
 
-  //カメラの作成
-  camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 0.1, 2000);
-  //カメラセット
-  camera.position.set(-20, 30, 50);
-  camera.lookAt(new THREE.Vector3(0, 10, 0));
+    // カメラ
+    const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
 
-  // 滑らかにカメラコントローラーを制御する
-  const controls = new OrbitControls(camera, document.body);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.2;
+    // レンダラー
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas || undefined,
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(window.devicePixelRatio);
 
-  //光源
-  const dirLight = new THREE.SpotLight(0xffffff, 1.5); //color,強度
-  dirLight.position.set(-20, 30, 30);
-  scene.add(dirLight);
-  const light = new THREE.AmbientLight(0xffffff, 1.0);
-  scene.add(light);
+    // ボックスジオメトリー
+    const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+    const boxMaterial = new THREE.MeshLambertMaterial({
+      color: '#2497f0',
+    });
+    const box = new THREE.Mesh(boxGeometry, boxMaterial);
+    box.position.z = -5;
+    box.rotation.set(10, 10, 10);
+    scene.add(box);
 
-  //レンダラー
-  renderer = new THREE.WebGLRenderer({
-    alpha: true,
-    antialias: true,
-  });
-  renderer.setClearColor(new THREE.Color(0xffffff));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+    // ライト
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+    const pointLight = new THREE.PointLight(0xffffff, 0.2);
+    pointLight.position.set(1, 2, 3);
+    scene.add(pointLight);
 
-  //glbファイルの読み込み
-  const loader = new GLTFLoader();
+    // アニメーション
+    const clock = new THREE.Clock();
+    const tick = () => {
+      const elapsedTime = clock.getElapsedTime();
+      box.rotation.x = elapsedTime;
+      box.rotation.y = elapsedTime;
+      window.requestAnimationFrame(tick);
+      renderer.render(scene, camera);
+    };
+    tick();
 
-  loader.load(
-    'https://gtgshare006.xsrv.jp/3d/wallet.glb',
-    function (gltf) {
-      model = gltf.scene;
-      model.traverse((object) => {
-        //モデルの構成要素
-        if (object.isMesh) {
-          //その構成要素がメッシュだったら
-          object.material.trasparent = true; //透明許可
-          object.material.opacity = 0.8; //透過
-          object.material.depthTest = true; //陰影で消える部分
-        }
-      });
-      scene.add(model);
-    },
-    undefined,
-    function (e) {
-      console.error(e);
-    }
+    // ブラウザのリサイズ処理
+    window.addEventListener('resize', () => {
+      sizes.width = window.innerWidth;
+      sizes.height = window.innerHeight;
+      camera.aspect = sizes.width / sizes.height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(sizes.width, sizes.height);
+      renderer.setPixelRatio(window.devicePixelRatio);
+    });
+  }, []);
+  return (
+    <>
+      <canvas id='canvas'></canvas>
+    </>
   );
+};
 
-  document.getElementById('WebGL-output').appendChild(renderer.domElement);
-}
-
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-}
-document.body.addEventListener(
-  'touchmove',
-  (e) => {
-    if (e.touches.length > 1) {
-      e.preventDefault();
-    }
-  },
-  { passive: false }
-);
-
-const Home = () => <div style={{ width: '100vw', height: '100vh' }} id='WebGL-output'></div>;
 export default Home;
