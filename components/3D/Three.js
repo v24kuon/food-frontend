@@ -14,7 +14,7 @@ const Three = () => {
     const scene = new THREE.Scene();
 
     // カメラ
-    const camera = new THREE.PerspectiveCamera(10, 500 / 500, 0.1, 2000);
+    const camera = new THREE.PerspectiveCamera(10, 500 / 300, 0.1, 2000);
     //カメラセット
     camera.position.set(-20, 30, 50);
     camera.lookAt(new THREE.Vector3(0, 10, 0));
@@ -31,7 +31,7 @@ const Three = () => {
       alpha: true,
     });
     renderer.setClearColor(new THREE.Color(0xffffff));
-    renderer.setSize(500, 500);
+    renderer.setSize(500, 300);
 
     // ボックスジオメトリー
     let model;
