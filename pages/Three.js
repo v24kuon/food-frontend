@@ -43,7 +43,7 @@ const Home = () => {
     const loader = new GLTFLoader();
 
     loader.load(
-      'https://gtgshare006.xsrv.jp/3d/wallet.glb',
+      '/wallet.glb',
       function (gltf) {
         model = gltf.scene;
         model.traverse((object) => {
