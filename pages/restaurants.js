@@ -35,7 +35,7 @@ const Restaurants = (props) => {
     return (
       <>
         <h1 style={{ marginTop: '1em' }}>{restaurant.name}</h1>
-        {(restaurant.name = 'Purse Workshop' ? <p>財布</p> : <p>違う</p>)}
+        {restaurant.name === 'Purse Workshop' ? <p>財布</p> : <p>違う</p>}
         <Row>
           {restaurant.dishes.map((dish) => (
             <Col xs='12' sm='6' md='4' key={dish.id} style={{ padding: 0 }}>
