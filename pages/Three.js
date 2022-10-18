@@ -1,30 +1,29 @@
-import { useState, useRef } from 'react';
+import { createRoot } from 'react-dom/client';
+import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 
-const Box = () => {
-  const ref = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useFrame(() => {
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01;
-  }, []);
-
+function Box(props) {
+  // This reference will give us direct access to the mesh
+  const mesh = useRef();
+  // Set up state for the hovered and active state
+  const [hovered, setHover] = useState(false);
+  const [active, setActive] = useState(false);
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  useFrame((state, delta) => (mesh.current.rotation.x += 0.01));
+  // Return view, these are regular three.js elements expressed in JSX
   return (
-    <mesh ref={ref} onPointerOver={() => setIsHovered(true)} onPointerOut={() => setIsHovered(false)}>
-      <boxBufferGeometry args={isHovered ? [1.2, 1.2, 1.2] : [1, 1, 1]} />
-      <meshLambertMaterial color={isHovered ? 0x44c2b5 : 0x9178e6} />
+    <mesh {...props} ref={mesh} scale={active ? 1.5 : 1} onClick={(event) => setActive(!active)} onPointerOver={(event) => setHover(true)} onPointerOut={(event) => setHover(false)}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
     </mesh>
   );
-};
-
-export default function App() {
-  return (
-    <Canvas dpr={2}>
-      <color attach='background' args={[0xf5f3fd]} />
-      <ambientLight intensity={0.5} />
-      <directionalLight intensity={0.5} position={[-10, 10, 10]} />
-      <Box />
-    </Canvas>
-  );
 }
+
+createRoot(document.getElementById('root')).render(
+  <Canvas>
+    <ambientLight />
+    <pointLight position={[10, 10, 10]} />
+    <Box position={[-1.2, 0, 0]} />
+    <Box position={[1.2, 0, 0]} />
+  </Canvas>
+);
