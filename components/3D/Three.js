@@ -31,7 +31,7 @@ const Three = () => {
       alpha: true,
     });
     renderer.setClearColor(new THREE.Color(0xffffff));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(500, 500);
 
     // ボックスジオメトリー
     let model;
@@ -76,7 +76,7 @@ const Three = () => {
   }, []);
   return (
     <div>
-      <canvas id='canvas' width='500' height='500'></canvas>
+      <canvas id='canvas'></canvas>
       <style jsx>
         {`
           #canvas {
