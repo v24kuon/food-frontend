@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from '../lib/orbitcontrols';
 import { GLTFLoader } from '../lib/gltf';
 
-const Home = () => {
+const Three = () => {
   let canvas;
   useEffect(() => {
     if (canvas) return;
@@ -96,4 +96,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Three;
