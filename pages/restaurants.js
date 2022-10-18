@@ -34,7 +34,7 @@ const Restaurants = (props) => {
   if (data) {
     const { restaurant } = data;
     return (
-      <>
+      <div style={{ padding: '1em 0' }}>
         <h1>{restaurant.name}</h1>
         {restaurant.name === 'Purse Workshop' ? <Three /> : <p></p>}
         <Row>
@@ -66,9 +66,6 @@ const Restaurants = (props) => {
               a:hover {
                 color: white;
               }
-              .container {
-                padding: 1em 0;
-              }
               .card-colums {
                 column-count: 3;
               }
@@ -80,7 +77,7 @@ const Restaurants = (props) => {
             </div>
           </Col>
         </Row>
-      </>
+      </div>
     );
   } else {
     return <h1>レストランが見つかりませんでした。</h1>;
