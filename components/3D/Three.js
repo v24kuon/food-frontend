@@ -76,14 +76,13 @@ const Three = () => {
   }, []);
   return (
     <div>
-      <canvas id='canvas' style={{ width: '100%' }}></canvas>
+      <canvas id='canvas' width='500' height='500'></canvas>
       <style jsx>
         {`
           #canvas {
             margin: 0;
             overflow: hidden;
-            width: 50%;
-            margin-left; auto;
+            max-width: 100%;
           }
         `}
       </style>
