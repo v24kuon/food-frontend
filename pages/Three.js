@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from '../lib/orbitcontrols';
+import { GLTFLoader } from '../lib/gltf';
 
 const Home = () => {
   let canvas;
