@@ -38,7 +38,7 @@ const Restaurants = (props) => {
         <h1>{restaurant.name}</h1>
         {restaurant.name === 'BURTMUNRO' ? (
           <div>
-            <p>3Dモデルをズームや動かしたりできます。</p>
+            <p>3Dモデルを動かしたりズームできます。</p>
             <Three />
           </div>
         ) : (
