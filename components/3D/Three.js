@@ -13,12 +13,6 @@ const Three = () => {
     // シーン
     const scene = new THREE.Scene();
 
-    // サイズ
-    const sizes = {
-      width: innerWidth,
-      height: innerHeight,
-    };
-
     // カメラ
     const camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 0.1, 2000);
     //カメラセット
@@ -81,14 +75,15 @@ const Three = () => {
     // ブラウザのリサイズ処理
   }, []);
   return (
-    <div className='container-fluid'>
+    <div>
       <canvas id='canvas' style={{ width: '100%' }}></canvas>
       <style jsx>
         {`
           #canvas {
             margin: 0;
             overflow: hidden;
-            max-width: 100%;
+            width: 50%;
+            margin-left; auto;
           }
         `}
       </style>
