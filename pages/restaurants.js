@@ -35,7 +35,7 @@ const Restaurants = (props) => {
     const { restaurant } = data;
     return (
       <>
-        <h1 style={{ marginTop: '1em' }}>{restaurant.name}</h1>
+        <h1>{restaurant.name}</h1>
         {restaurant.name === 'Purse Workshop' ? <Three /> : <p></p>}
         <Row>
           {restaurant.dishes.map((dish) => (
@@ -65,6 +65,9 @@ const Restaurants = (props) => {
               }
               a:hover {
                 color: white;
+              }
+              .container {
+                padding: 1em 0;
               }
               .card-colums {
                 column-count: 3;
