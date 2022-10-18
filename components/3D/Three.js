@@ -14,15 +14,15 @@ const Three = () => {
     const scene = new THREE.Scene();
 
     // カメラ
-    const camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 0.1, 2000);
+    const camera = new THREE.PerspectiveCamera(10, 500 / 500, 0.1, 2000);
     //カメラセット
     camera.position.set(-20, 30, 50);
     camera.lookAt(new THREE.Vector3(0, 10, 0));
 
     // 滑らかにカメラコントローラーを制御する
-    // const controls = new OrbitControls(camera, document.body);
-    // controls.enableDamping = true;
-    // controls.dampingFactor = 0.2;
+    const controls = new OrbitControls(camera, document.body);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.2;
 
     // レンダラー
     const renderer = new THREE.WebGLRenderer({
