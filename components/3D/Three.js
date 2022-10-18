@@ -20,7 +20,7 @@ const Three = () => {
     camera.lookAt(new THREE.Vector3(0, 10, 0));
 
     // 滑らかにカメラコントローラーを制御する
-    const controls = new OrbitControls(camera, document.body);
+    const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.dampingFactor = 0.2;
 
