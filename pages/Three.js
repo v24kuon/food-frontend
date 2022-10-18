@@ -43,7 +43,7 @@ const Home = () => {
     const loader = new GLTFLoader();
 
     loader.load(
-      'http://gtgshare006.xsrv.jp/3d/wallet.glb',
+      'https://gtgshare006.xsrv.jp/3d/wallet.glb',
       function (gltf) {
         model = gltf.scene;
         model.traverse((object) => {
@@ -71,15 +71,11 @@ const Home = () => {
     scene.add(pointLight);
 
     // アニメーション
-    const clock = new THREE.Clock();
-    const tick = () => {
-      const elapsedTime = clock.getElapsedTime();
-      box.rotation.x = elapsedTime;
-      box.rotation.y = elapsedTime;
-      window.requestAnimationFrame(tick);
+    function animate() {
+      requestAnimationFrame(animate);
       renderer.render(scene, camera);
-    };
-    tick();
+    }
+    animate();
 
     // ブラウザのリサイズ処理
     window.addEventListener('resize', () => {
