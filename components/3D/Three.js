@@ -14,7 +14,7 @@ const Three = () => {
     const scene = new THREE.Scene();
 
     // カメラ
-    const camera = new THREE.PerspectiveCamera(5, 500 / 300, 0.1, 2000);
+    const camera = new THREE.PerspectiveCamera(3, 500 / 300, 0.1, 2000);
     //カメラセット
     camera.position.set(-20, 30, 50);
     camera.lookAt(new THREE.Vector3(0, 10, 0));
