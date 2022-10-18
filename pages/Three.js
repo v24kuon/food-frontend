@@ -40,6 +40,7 @@ const Home = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // ボックスジオメトリー
+    let model;
     const loader = new GLTFLoader();
 
     loader.load(
