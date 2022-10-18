@@ -36,7 +36,14 @@ const Restaurants = (props) => {
     return (
       <div style={{ padding: '1em 0' }}>
         <h1>{restaurant.name}</h1>
-        {restaurant.name === 'BURTMUNRO' ? <Three /> : <p></p>}
+        {restaurant.name === 'BURTMUNRO' ? (
+          <div>
+            <p>3Dモデルをズームや動かしたりできます。</p>
+            <Three />
+          </div>
+        ) : (
+          <p></p>
+        )}
         <Row>
           {restaurant.dishes.map((dish) => (
             <Col xs='12' sm='6' md='4' key={dish.id} style={{ padding: 0 }}>

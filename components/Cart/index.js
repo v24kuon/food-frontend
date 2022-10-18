@@ -13,7 +13,7 @@ const Cart = () => {
         <hr />
         <CardBody style={{ padding: 10 }}>
           <div style={{ marginBottom: 6 }}>
-            <small>料理:</small>
+            <small>商品:</small>
           </div>
           <div>
             {cart.items
