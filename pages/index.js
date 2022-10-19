@@ -10,7 +10,7 @@ const index = () => {
         <Col>
           <div className='search'>
             <InputGroup>
-              <Input placeholder='レストラン名を入力してください' onChange={(e) => setQuery(e.target.value.toLocaleLowerCase())} />
+              <Input placeholder='ショップ名を入力してください' onChange={(e) => setQuery(e.target.value.toLocaleLowerCase())} />
               <InputGroupText>探す</InputGroupText>
             </InputGroup>
           </div>
