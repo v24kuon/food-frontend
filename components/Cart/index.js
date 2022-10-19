@@ -7,7 +7,7 @@ const Cart = () => {
   const appContext = useContext(AppContext);
   const { cart } = appContext;
   return (
-    <div>
+    <div style={{ padding: 10 }}>
       <Card style={{ padding: '10px 5px' }}>
         <CardTitle style={{ margin: 10, textAlign: 'center', fontWeight: 600, fontSize: 25 }}>注文一覧</CardTitle>
         <hr />
