@@ -37,16 +37,14 @@ const Restaurants = (props) => {
       <div style={{ padding: '1em 0' }}>
         <h1>{restaurant.name}</h1>
         <Row>
-          <Col xs='12' sm='6' md='8'>
-            {restaurant.name === 'BURTMUNRO' ? (
-              <div style={{ padding: 0, border: '1px solid #000', textAlign: 'center' }}>
-                <p>3Dモデルを動かしたりズームできます。</p>
-                <Three />
-              </div>
-            ) : (
-              <p></p>
-            )}
-          </Col>
+          {restaurant.name === 'BURTMUNRO' ? (
+            <Col xs='12' sm='6' md='8' style={{ padding: 0, border: '1px solid #000', textAlign: 'center' }}>
+              <p>3Dモデルを動かしたりズームできます。</p>
+              <Three />
+            </Col>
+          ) : (
+            <p></p>
+          )}
           {restaurant.dishes.map((dish) => (
             <Col xs='12' sm='6' md='4' key={dish.id} style={{ padding: 0 }}>
               <Card style={{ margin: '0 10px', height: '100%' }}>
