@@ -38,9 +38,11 @@ const Restaurants = (props) => {
         <h1>{restaurant.name}</h1>
         <Row>
           {restaurant.name === 'BURTMUNRO' ? (
-            <Col xs='12' sm='6' md='8' style={{ padding: 0, border: '1px solid #000', textAlign: 'center' }}>
-              <p>3Dモデルを動かしたりズームできます。</p>
-              <Three />
+            <Col xs='12' sm='6' md='8' style={{ padding: 10, textAlign: 'center' }}>
+              <div style={{ border: '1px solid #000' }}>
+                <p>3Dモデルを動かしたりズームできます。</p>
+                <Three />
+              </div>
             </Col>
           ) : (
             <p></p>
@@ -52,6 +54,7 @@ const Restaurants = (props) => {
                 <CardBody>
                   <CardTitle>{dish.name}</CardTitle>
                   <CardTitle>{dish.description}</CardTitle>
+                  <CardTitle>価格:{dish.price}</CardTitle>
                 </CardBody>
                 <div className='card-footer'>
                   <Button outline color='primary' onClick={() => appContext.addItem(dish)}>
