@@ -36,10 +36,10 @@ const Restaurants = (props) => {
     return (
       <div style={{ padding: '1em 0' }}>
         <h1>{restaurant.name}</h1>
-        <Row style={{ gap: '.5em' }}>
-          <Col xs='12' sm='6' md='8' style={{ padding: 0, border: '1px solid #000', textAlign: 'center' }}>
+        <Row>
+          <Col xs='12' sm='6' md='8'>
             {restaurant.name === 'BURTMUNRO' ? (
-              <div>
+              <div style={{ padding: 0, border: '1px solid #000', textAlign: 'center' }}>
                 <p>3Dモデルを動かしたりズームできます。</p>
                 <Three />
               </div>
