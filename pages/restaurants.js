@@ -47,7 +47,7 @@ const Restaurants = (props) => {
         <Row>
           {restaurant.dishes.map((dish) => (
             <Col xs='12' sm='6' md='4' key={dish.id} style={{ padding: 0 }}>
-              <Card style={{ margin: '0 10px' }}>
+              <Card style={{ margin: '0 10px', height: '100%' }}>
                 <CardImg src={`${dish.image.url}`} top={true} style={{ height: 250 }} />
                 <CardBody>
                   <CardTitle>{dish.name}</CardTitle>
